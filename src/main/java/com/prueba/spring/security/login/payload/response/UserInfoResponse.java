@@ -5,13 +5,18 @@ import java.util.List;
 public class UserInfoResponse {
 	private Long id;
 	private String username;
+	private String name;
 	private String email;
+	private List<String> phones;
 	private List<String> roles;
 
-	public UserInfoResponse(Long id, String username, String email, List<String> roles) {
+	public UserInfoResponse(Long id, String username, String name, String email, List<String> phones,
+			List<String> roles) {
 		this.id = id;
 		this.username = username;
+		this.name = name;
 		this.email = email;
+		this.phones = phones;
 		this.roles = roles;
 	}
 
@@ -39,6 +44,18 @@ public class UserInfoResponse {
 		this.username = username;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setname(String name) {
+		this.name = name;
+	}
+
+	public List<String> getPhones() {
+		return phones;
+	}
+	
 	public List<String> getRoles() {
 		return roles;
 	}

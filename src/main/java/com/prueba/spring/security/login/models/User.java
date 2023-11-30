@@ -9,11 +9,10 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "users",
-       uniqueConstraints = {
-           @UniqueConstraint(columnNames = "username"),
-           @UniqueConstraint(columnNames = "email")
-       })
+@Table(name = "users", uniqueConstraints = {
+    @UniqueConstraint(columnNames = "username"),
+    @UniqueConstraint(columnNames = "email")
+})
 public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +23,10 @@ public class User {
   private String username;
 
   @NotBlank
+  @Size(max = 15)
+  private String name;
+
+  @NotBlank
   @Size(max = 50)
   @Email
   private String email;
@@ -32,17 +35,18 @@ public class User {
   @Size(max = 120)
   private String password;
 
+  private Set<String> phones = new HashSet<>();
+
   @ManyToMany(fetch = FetchType.LAZY)
-  @JoinTable(name = "user_roles", 
-             joinColumns = @JoinColumn(name = "user_id"),
-             inverseJoinColumns = @JoinColumn(name = "role_id"))
+  @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
   private Set<Role> roles = new HashSet<>();
 
   public User() {
   }
 
-  public User(String username, String email, String password) {
+  public User(String username, String name, String email, String password) {
     this.username = username;
+    this.name = name;
     this.email = email;
     this.password = password;
   }
@@ -63,6 +67,14 @@ public class User {
     this.username = username;
   }
 
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
   public String getEmail() {
     return email;
   }
@@ -77,6 +89,14 @@ public class User {
 
   public void setPassword(String password) {
     this.password = password;
+  }
+
+  public Set<String> getPhones() {
+    return phones;
+  }
+
+  public void setPhones(Set<String> phones) {
+    this.phones = phones;
   }
 
   public Set<Role> getRoles() {
