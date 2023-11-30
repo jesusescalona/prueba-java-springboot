@@ -8,26 +8,42 @@
 ![diagrama-solución](diagrama-solución.png)
 
 
-## Ejecutar la aplicación Spring Boot con el siguiente comando
+# Pasos para levantar proyecto
+## 1) Instalar dependencias
+```
+Ubicarse a través de la terminal en la carpeta del proyecto y ejecutar el siguiente comando:
+
+mvn clean install
+
+```
+## 2) Ejecutar la aplicación Spring Boot con el siguiente comando
 ```
 mvn spring-boot:run
 ```
 
-## Ejecuta los siguientes scripts para insertar los roles de usuario para establecer los niveles de acceso
+## 3) Acceder a la base de datos h2
+```
+http://localhost:9090/h2-console/
+```
+
+## 4) Ejecuta los siguientes scripts para insertar los roles de usuario para establecer los niveles de acceso
 ```
 INSERT INTO roles(name) VALUES('ROLE_USER');
 INSERT INTO roles(name) VALUES('ROLE_MODERATOR');
 INSERT INTO roles(name) VALUES('ROLE_ADMIN');
 ```
-## Acceso a base de datos h2
+
+## 5) Importar colección Postman para probar servicios:
 ```
-http://localhost:9090/h2-console/
+Backend-spring-boot.postman_collection.json
 ```
+
 ## Acceso a swagger
 ```
 http://localhost:9090/doc/swagger-ui/index.html
 ```
 
-## Acceso a repositorio, ejecutar siguiente comando:
+## Clonar repositorio, ejecutar el siguiente comando:
 ```
 git clone https://github.com/jesusescalona/prueba-java-springboot.git
+```
