@@ -55,7 +55,7 @@ public class UserInfoResponse {
 	public List<String> getPhones() {
 		return phones;
 	}
-	
+
 	public List<String> getRoles() {
 		return roles;
 	}

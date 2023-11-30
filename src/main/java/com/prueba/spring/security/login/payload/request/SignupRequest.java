@@ -1,8 +1,13 @@
 package com.prueba.spring.security.login.payload.request;
 
+import java.util.List;
 import java.util.Set;
 
-import jakarta.validation.constraints.*;
+import com.prueba.spring.security.login.models.Phone;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 public class SignupRequest {
     @NotBlank
@@ -18,7 +23,7 @@ public class SignupRequest {
     @Email
     private String email;
 
-    private Set<String> phones;
+    private List<Phone> phones;
     private Set<String> role;
 
     @NotBlank
@@ -57,11 +62,11 @@ public class SignupRequest {
         this.password = password;
     }
 
-    public Set<String> getPhones() {
+    public List<Phone> getPhones() {
         return this.phones;
     }
 
-    public void setPhones(Set<String> phones) {
+    public void setPhones(List<Phone> phones) {
         this.phones = phones;
     }
 
