@@ -30,4 +30,4 @@ http://localhost:9090/doc/swagger-ui/index.html
 
 ## Acceso a repositorio, ejecutar siguiente comando:
 ```
-git clone https://github.com/jesusescalona/prueba-spring-boot.git
+git clone https://github.com/jesusescalona/prueba-java-springboot.git
