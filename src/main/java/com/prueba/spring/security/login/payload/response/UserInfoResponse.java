@@ -1,22 +1,26 @@
 package com.prueba.spring.security.login.payload.response;
 
+import java.util.Collection;
 import java.util.List;
+
+import com.prueba.spring.security.login.models.Phone;
 
 public class UserInfoResponse {
 	private Long id;
 	private String username;
 	private String name;
 	private String email;
-	private List<String> phones;
+	private Collection<Phone> phones;
+	private List<String> phones2;
 	private List<String> roles;
 
-	public UserInfoResponse(Long id, String username, String name, String email, List<String> phones,
+	public UserInfoResponse(Long id, String username, String name, String email, List<Phone> phones2,
 			List<String> roles) {
 		this.id = id;
 		this.username = username;
 		this.name = name;
 		this.email = email;
-		this.phones = phones;
+		this.phones = phones2;
 		this.roles = roles;
 	}
 
@@ -52,8 +56,12 @@ public class UserInfoResponse {
 		this.name = name;
 	}
 
-	public List<String> getPhones() {
+	public Collection<Phone> getPhones() {
 		return phones;
+	}
+
+	public List<String> getPhones2() {
+		return phones2;
 	}
 
 	public List<String> getRoles() {

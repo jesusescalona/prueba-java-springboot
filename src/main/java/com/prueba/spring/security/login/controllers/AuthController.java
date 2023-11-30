@@ -73,7 +73,7 @@ public class AuthController {
         .map(item -> item.getAuthority())
         .collect(Collectors.toList());
 
-    List<String> phones = userDetails.getPhones().stream().collect(Collectors.toList());
+    List<Phone> phones = (List<Phone>) userDetails.getPhones();
 
     return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
         .body(new UserInfoResponse(userDetails.getId(),
@@ -101,7 +101,6 @@ public class AuthController {
         encoder.encode(signUpRequest.getPassword()));
 
     List<Phone> strPhones = signUpRequest.getPhones();
-
 
     Set<String> strRoles = signUpRequest.getRole();
     Set<Role> roles = new HashSet<>();

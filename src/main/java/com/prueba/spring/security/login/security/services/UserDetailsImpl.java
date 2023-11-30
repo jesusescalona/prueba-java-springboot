@@ -27,11 +27,16 @@ public class UserDetailsImpl implements UserDetails {
   @JsonIgnore
   private String password;
 
-  private Collection<String> phones;
+  private Collection<Phone> phones;
   private Collection<? extends GrantedAuthority> authorities;
 
-  public UserDetailsImpl(Long id, String username, String name, String email, String password,
-      Collection<String> phones,
+  public UserDetailsImpl(
+      Long id,
+      String username,
+      String name,
+      String email,
+      String password,
+      Collection<Phone> phones,
       Collection<? extends GrantedAuthority> authorities) {
     this.id = id;
     this.username = username;
@@ -42,12 +47,24 @@ public class UserDetailsImpl implements UserDetails {
     this.authorities = authorities;
   }
 
-  public UserDetailsImpl(Long id2, String username2, String name2, String email2, String password2, List<Phone> phones2,
-		List<GrantedAuthority> authorities2) {
-	// TODO Auto-generated constructor stub
-}
+  public UserDetailsImpl(
+      Long id2,
+      String username2,
+      String name2,
+      String email2,
+      String password2,
+      List<Phone> phones2,
+      List<? extends GrantedAuthority> authorities2) {
+    this.id = id2;
+    this.username = username2;
+    this.name = name2;
+    this.email = email2;
+    this.password = password2;
+    this.phones = phones2;
+    this.authorities = authorities2;
+  }
 
-public static UserDetailsImpl build(User user) {
+  public static UserDetailsImpl build(User user) {
     List<GrantedAuthority> authorities = user.getRoles().stream()
         .map(role -> new SimpleGrantedAuthority(role.getName().name()))
         .collect(Collectors.toList());
@@ -89,7 +106,7 @@ public static UserDetailsImpl build(User user) {
     return name;
   }
 
-  public Collection<String> getPhones() {
+  public Collection<Phone> getPhones() {
     return phones;
   }
 
