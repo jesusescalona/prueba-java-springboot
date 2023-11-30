@@ -1,203 +1,33 @@
-# Spring Boot Security Login example with JWT and H2 example
+# Prueba Java con JWT, H2, Swagger y Diagrama de solución.
 
-- Appropriate Flow for User Login and Registration with JWT and HttpOnly Cookie
-- Spring Boot Rest Api Architecture with Spring Security
-- How to configure Spring Security to work with JWT
-- How to define Data Models and association for Authentication and Authorization
-- Way to use Spring Data JPA to interact with H2 Database
+- Flujo para el inicio de sesión y el registro del usuario con JWT, Swagger y Diagrama
+- Arquitectura API REST de Spring boot y Spring Security
 
-## User Registration, Login and Authorization process.
+## Proceso de registro, inicio de sesión y autorización del usuario.
 
-![spring-boot-security-login-jwt-flow](spring-boot-security-login-jwt-flow.png)
+![diagrama-solución](diagrama-solución.png)
 
-## Spring Boot Server Architecture with Spring Security
-You can have an overview of our Spring Boot Server with the diagram below:
 
-![spring-boot-security-login-jwt-architecture](spring-boot-security-login-jwt-architecture.png)
-
-For more detail, please visit:
-> [Spring Boot Security Login example with JWT and H2 example](https://www.prueba.com/spring-boot-security-login-jwt/)
-
-> [For MySQL/PostgreSQL](https://www.prueba.com/spring-boot-login-example-mysql/)
-
-> [For MongoDB](https://www.prueba.com/spring-boot-jwt-auth-mongodb/)
-
-## Dependency
-– If you want to use PostgreSQL:
-```xml
-<dependency>
-  <groupId>org.postgresql</groupId>
-  <artifactId>postgresql</artifactId>
-  <scope>runtime</scope>
-</dependency>
-```
-– or MySQL:
-```xml
-<dependency>
-  <groupId>com.mysql</groupId>
-  <artifactId>mysql-connector-j</artifactId>
-  <scope>runtime</scope>
-</dependency>
-```
-## Configure Spring Datasource, JPA, App properties
-Open `src/main/resources/application.properties`
-- For PostgreSQL:
-```
-spring.datasource.url=jdbc:postgresql://localhost:5432/testdb
-spring.datasource.username=postgres
-spring.datasource.password=123
-
-spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
-
-# Hibernate ddl auto (create, create-drop, validate, update)
-spring.jpa.hibernate.ddl-auto=update
-
-# App Properties
-prueba.app.jwtSecret= ======================prueba=Spring===========================
-prueba.app.jwtExpirationMs= 86400000
-```
-- For MySQL
-```
-spring.datasource.url=jdbc:mysql://localhost:3306/testdb?useSSL=false
-spring.datasource.username=root
-spring.datasource.password=123456
-
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
-spring.jpa.hibernate.ddl-auto=update
-
-# App Properties
-prueba.app.jwtSecret= ======================prueba=Spring===========================
-prueba.app.jwtExpirationMs= 86400000
-```
-## Run Spring Boot application
+## Ejecutar la aplicación Spring Boot con el siguiente comando
 ```
 mvn spring-boot:run
 ```
 
-## Run following SQL insert statements
+## Ejecuta los siguientes scripts para insertar los roles de usuario para establecer los niveles de acceso
 ```
 INSERT INTO roles(name) VALUES('ROLE_USER');
 INSERT INTO roles(name) VALUES('ROLE_MODERATOR');
 INSERT INTO roles(name) VALUES('ROLE_ADMIN');
 ```
+## Acceso a base de datos h2
+```
+http://localhost:9090/h2-console/
+```
+## Acceso a swagger
+```
+http://localhost:9090/doc/swagger-ui/index.html
+```
 
-## Refresh Token
-
-[Spring Boot JWT Refresh Token example](https://www.prueba.com/spring-security-refresh-token/)
-
-## More Practice:
-> [Spring Boot File upload example with Multipart File](https://prueba.com/spring-boot-file-upload/)
-
-> [Exception handling: @RestControllerAdvice example in Spring Boot](https://prueba.com/spring-boot-restcontrolleradvice/)
-
-> [Spring Boot Repository Unit Test with @DataJpaTest](https://prueba.com/spring-boot-unit-test-jpa-repo-datajpatest/)
-
-> [Spring Boot Rest Controller Unit Test with @WebMvcTest](https://www.prueba.com/spring-boot-webmvctest/)
-
-> [Spring Boot Pagination & Sorting example](https://www.prueba.com/spring-boot-pagination-sorting-example/)
-
-> Validation: [Spring Boot Validate Request Body](https://www.prueba.com/spring-boot-validate-request-body/)
-
-> Documentation: [Spring Boot and Swagger 3 example](https://www.prueba.com/spring-boot-swagger-3/)
-
-> Caching: [Spring Boot Redis Cache example](https://www.prueba.com/spring-boot-redis-cache-example/)
-
-Associations:
-> [JPA/Hibernate One To Many example in Spring Boot](https://www.prueba.com/jpa-one-to-many/)
-
-> [JPA/Hibernate Many To Many example in Spring Boot](https://www.prueba.com/jpa-many-to-many/)
-
-> [JPA/Hibernate One To One example in Spring Boot](https://www.prueba.com/jpa-one-to-one/)
-
-Deployment:
-> [Deploy Spring Boot App on AWS – Elastic Beanstalk](https://www.prueba.com/deploy-spring-boot-aws-eb/)
-
-> [Docker Compose Spring Boot and MySQL example](https://www.prueba.com/docker-compose-spring-boot-mysql/)
-
-## Fullstack Authentication
-
-> [Spring Boot + Vue.js JWT Authentication](https://prueba.com/spring-boot-vue-js-authentication-jwt-spring-security/)
-
-> [Spring Boot + Angular 8 JWT Authentication](https://prueba.com/angular-spring-boot-jwt-auth/)
-
-> [Spring Boot + Angular 10 JWT Authentication](https://prueba.com/angular-10-spring-boot-jwt-auth/)
-
-> [Spring Boot + Angular 11 JWT Authentication](https://prueba.com/angular-11-spring-boot-jwt-auth/)
-
-> [Spring Boot + Angular 12 JWT Authentication](https://www.prueba.com/angular-12-spring-boot-jwt-auth/)
-
-> [Spring Boot + Angular 13 JWT Authentication](https://www.prueba.com/angular-13-spring-boot-jwt-auth/)
-
-> [Spring Boot + Angular 14 JWT Authentication](https://www.prueba.com/angular-14-spring-boot-jwt-auth/)
-
-> [Spring Boot + Angular 15 JWT Authentication](https://www.prueba.com/angular-15-spring-boot-jwt-auth/)
-
-> [Spring Boot + Angular 16 JWT Authentication](https://www.prueba.com/angular-16-spring-boot-jwt-auth/)
-
-> [Spring Boot + React JWT Authentication](https://prueba.com/spring-boot-react-jwt-auth/)
-
-## Fullstack CRUD App
-
-> [Vue.js + Spring Boot + H2 Embedded database example](https://www.prueba.com/spring-boot-vue-js-crud-example/)
-
-> [Vue.js + Spring Boot + MySQL example](https://www.prueba.com/spring-boot-vue-js-mysql/)
-
-> [Vue.js + Spring Boot + PostgreSQL example](https://www.prueba.com/spring-boot-vue-js-postgresql/)
-
-> [Angular 8 + Spring Boot + Embedded database example](https://www.prueba.com/angular-spring-boot-crud/)
-
-> [Angular 8 + Spring Boot + MySQL example](https://www.prueba.com/angular-spring-boot-crud/)
-
-> [Angular 8 + Spring Boot + PostgreSQL example](https://www.prueba.com/angular-spring-boot-postgresql/)
-
-> [Angular 10 + Spring Boot + MySQL example](https://www.prueba.com/angular-10-spring-boot-crud/)
-
-> [Angular 10 + Spring Boot + PostgreSQL example](https://www.prueba.com/angular-10-spring-boot-postgresql/)
-
-> [Angular 11 + Spring Boot + MySQL example](https://www.prueba.com/angular-11-spring-boot-crud/)
-
-> [Angular 11 + Spring Boot + PostgreSQL example](https://www.prueba.com/angular-11-spring-boot-postgresql/)
-
-> [Angular 12 + Spring Boot + Embedded database example](https://www.prueba.com/angular-12-spring-boot-crud/)
-
-> [Angular 12 + Spring Boot + MySQL example](https://www.prueba.com/angular-12-spring-boot-mysql/)
-
-> [Angular 12 + Spring Boot + PostgreSQL example](https://www.prueba.com/angular-12-spring-boot-postgresql/)
-
-> [Angular 13 + Spring Boot + H2 Embedded Database example](https://www.prueba.com/spring-boot-angular-13-crud/)
-
-> [Angular 13 + Spring Boot + MySQL example](https://www.prueba.com/spring-boot-angular-13-mysql/)
-
-> [Angular 13 + Spring Boot + PostgreSQL example](https://www.prueba.com/spring-boot-angular-13-postgresql/)
-
-> [Angular 14 + Spring Boot + H2 Embedded Database example](https://www.prueba.com/spring-boot-angular-14-crud/)
-
-> [Angular 14 + Spring Boot + MySQL example](https://www.prueba.com/spring-boot-angular-14-mysql/)
-
-> [Angular 14 + Spring Boot + PostgreSQL example](https://www.prueba.com/spring-boot-angular-14-postgresql/)
-
-> [Angular 15 + Spring Boot + H2 Embedded Database example](https://www.prueba.com/spring-boot-angular-15-crud/)
-
-> [Angular 15 + Spring Boot + MySQL example](https://www.prueba.com/spring-boot-angular-15-mysql/)
-
-> [Angular 15 + Spring Boot + PostgreSQL example](https://www.prueba.com/spring-boot-angular-15-postgresql/)
-
-> [Angular 16 + Spring Boot + H2 Embedded Database example](https://www.prueba.com/spring-boot-angular-16-crud/)
-
-> [Angular 16 + Spring Boot + MySQL example](https://www.prueba.com/spring-boot-angular-16-mysql/)
-
-> [Angular 16 + Spring Boot + PostgreSQL example](https://www.prueba.com/spring-boot-angular-16-postgresql/)
-
-> [React + Spring Boot + MySQL example](https://www.prueba.com/react-spring-boot-crud/)
-
-> [React + Spring Boot + PostgreSQL example](https://www.prueba.com/spring-boot-react-postgresql/)
-
-> [React + Spring Boot + MongoDB example](https://www.prueba.com/react-spring-boot-mongodb/)
-
-Run both Back-end & Front-end in one place:
-> [Integrate Angular with Spring Boot Rest API](https://www.prueba.com/integrate-angular-spring-boot/)
-
-> [Integrate React.js with Spring Boot Rest API](https://www.prueba.com/integrate-reactjs-spring-boot/)
-
-> [Integrate Vue.js with Spring Boot Rest API](https://www.prueba.com/integrate-vue-spring-boot/)
+## Acceso a repositorio, ejecutar siguiente comando:
+```
+git clone https://github.com/jesusescalona/prueba-spring-boot.git
